@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blog Homepage</title>
+</head>
+<body>
+    <h1>Published Posts</h1>
+    <ul>
+        {% for post in page_obj %}
+            <li>
+                <a href="{% url 'blog:post_detail' slug=post.slug %}">
+                    {{ post.title }}
+                </a> - {{ post.author }} ({{ post.published_at }})
+            </li>
+        {% empty %}
+            <li>No posts yet.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
